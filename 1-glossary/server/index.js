@@ -32,6 +32,14 @@ app.get('/getOne', (req, res) => {
 
 app.post('/editWord', (req, res) => {
   console.log('hello from editWord');
+  var find = {word: 'testing'};
+  var update = {definition: 'updated testing'};
+  Word.findOneAndUpdate(find, update, {new: true})
+    .exec()
+    .then(updatedWord => {
+      console.log('updated word: ', updatedWord);
+      res.send(updatedWord);
+    })
 })
 
 app.post('/addWord', (req, res) => {

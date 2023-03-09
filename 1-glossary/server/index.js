@@ -17,13 +17,15 @@ app.get('/getAll', (req, res) => {
     .exec()
     .then((data) => {
       console.log('data from find', data);
-      res.send(data)
+      res.json(data)
     })
 })
 
-app.get('/getOne', (req, res) => {
+app.post('/getOne', (req, res) => {
   console.log('hello from getONe');
-  Word.findOne({word: 'testing'})
+  console.log(req.body);
+
+  Word.findOne(req.body)
     .exec()
     .then((data) => {
       console.log('response from getONe', data);

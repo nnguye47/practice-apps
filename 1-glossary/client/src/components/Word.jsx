@@ -1,5 +1,5 @@
 const Word = () => (
-  <div className='word'>
+  <div>
     hello from word
   </div>
 )

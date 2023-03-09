@@ -44,12 +44,12 @@ app.post('/editWord', (req, res) => {
 })
 
 app.post('/addWord', (req, res) => {
-  console.log('addWord post made it to the server');
+  console.log('hello from glossary');
 
-  // Word.create({word: 'banana', definition: 'curvy yellow fruit'})
-  //   .then(data => {
-  //     console.log('data from addword: ', data);
-  //   })
+  Word.create({word: 'banana', definition: 'curvy yellow fruit'})
+    .then(data => {
+      console.log('data from addword: ', data);
+    })
 })
 
 app.post('/deleteWord', (req, res) => {

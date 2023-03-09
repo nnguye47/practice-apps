@@ -1,7 +1,7 @@
 import Word from './Word.jsx';
 
 const WordList = () => (
-  <div className='list'>
+  <div>
     hello from WordList
     <Word />
   </div>

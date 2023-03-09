@@ -15,6 +15,13 @@ let glossarySchema = new mongoose.Schema({
 });
 
 let Word = mongoose.model('Word', glossarySchema);
-var tester = new Word({word: 'testing', definition: 'the DB'});
 
-module.exports.Word = Word;
+//create a function to save things to the server
+let save = (words) => { //words should be an array of objetcs
+  //for every word in the array
+  //create a new documet
+  //save it
+  return Word.create(words);
+}
+
+module.exports = Word;

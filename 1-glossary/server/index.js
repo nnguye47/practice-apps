@@ -3,8 +3,7 @@ const express = require("express");
 const path = require("path");
 const axios = require('axios');
 const app = express();
-
-const findAll = require('./models.js');
+const Word = require('./db.js');
 
 // Serves up all static and generated assets in ../client/dist.
 app.use(express.static(path.join(__dirname, "../client/dist")));
@@ -13,11 +12,22 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 //get all
 app.get('/getAll', (req, res) => {
   console.log('testing from getall');
-  findAll();
+  Word.find({})
+    .exec()
+    .then((data) => {
+      console.log('data from find', data);
+      res.send(data)
+    })
 })
 
 app.get('/getOne', (req, res) => {
   console.log('hello from getONe');
+  Word.findOne({word: 'testing'})
+    .exec()
+    .then((data) => {
+      console.log('response from getONe', data);
+      res.send(data);
+    })
 })
 
 app.post('/editWord', (req, res) => {

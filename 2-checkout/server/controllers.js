@@ -5,4 +5,8 @@ module.exports = {
     console.log('hello from controllers create account');
     models.createAccount();
   },
+
+  getCard: (location) => {
+    models.getCard(1);
+  }
 }

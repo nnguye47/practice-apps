@@ -35,7 +35,7 @@ app.post('/card', (req, res) => {
 })
 
 app.get('/checkout', (req, res) => {
-  console.log('hello from checkout');
+  controllers.getCard(1);
 })
 
 

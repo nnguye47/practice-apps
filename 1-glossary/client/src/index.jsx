@@ -21,15 +21,18 @@ const App = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('click');
-    axios.post('/getOne', {word: term})
-      .then(res => {
-        console.log('data from search', res.data);
-      })
+    var copy = Array.from(list);
+    var storage = [];
+    copy.forEach(word => {
+      if (term === word.word) {
+        storage.push(word);
+      }
+    })
+    setRenderList(storage);
   }
 
   const handleChange = (e) => {
-    console.log(e.target.value);
+    e.preventDefault();
     setTerm(e.target.value);
   }
 
@@ -52,7 +55,7 @@ const App = () => {
       <h1><p>Glossary App</p></h1>
       <SearchBar onSubmit={handleSearch} onChange={handleChange}/>
       <AddWord onSubmit={addWord} newWord={handleChange} newDefinition={handleDef}/>
-      <WordList />
+      <WordList words={renderList}/>
     </div>
   )
 }

@@ -1,10 +1,14 @@
 import Word from './Word.jsx';
 
-const WordList = () => (
-  <div>
-    hello from WordList
-    <Word />
-  </div>
-)
+const WordList = ({words}) => {
+
+  return (
+    <div>
+      {words.map((word, index) => (
+        <Word word={word} key={index}/>
+      ))}
+    </div>
+  )
+}
 
 export default WordList;

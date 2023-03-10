@@ -12,19 +12,14 @@ app.use(express.json());
 
 //get all
 app.get('/getAll', (req, res) => {
-  console.log('testing from getall');
   Word.find({})
     .exec()
     .then((data) => {
-      console.log('data from find', data);
       res.json(data)
     })
 })
 
 app.post('/getOne', (req, res) => {
-  console.log('hello from getONe');
-  console.log(req.body);
-
   Word.findOne(req.body)
     .exec()
     .then((data) => {
@@ -34,7 +29,6 @@ app.post('/getOne', (req, res) => {
 })
 
 app.post('/editWord', (req, res) => {
-  console.log('hello from editWord');
   var find = {word: 'testing'};
   var update = {definition: 'updated testing'};
   Word.findOneAndUpdate(find, update, {new: true})

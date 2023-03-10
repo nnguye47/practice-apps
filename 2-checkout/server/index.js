@@ -19,13 +19,23 @@ app.use(logger);
 // Serves up all static and generated assets in ../client/dist.
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-/**** 
- * 
- * 
- * Other routes here....
- *
- * 
- */
+//controllers
+app.post('/account', (req, res) => {
+  console.log('hello from account post');
+})
+
+app.post('/location', (req, res) => {
+  console.log('hello from location post');
+})
+
+app.post('/card', (req, res) => {
+  console.log('hello from card post')
+})
+
+app.get('/checkout', (req, res) => {
+  console.log('hello from checkout');
+})
+
 
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);

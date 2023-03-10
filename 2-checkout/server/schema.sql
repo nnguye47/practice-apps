@@ -17,7 +17,7 @@ CREATE TABLE card (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   num INT NOT NULL,
   CVV INT NOT NULL,
-  expiration INT NOT NULL,
+  expiration INT NOT NULL
 )
 
 CREATE TABLE location (

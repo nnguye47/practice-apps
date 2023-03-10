@@ -4,6 +4,9 @@ const Word = ({word}) => {
     <div>
       <h3>{word.word}:</h3>
       <p>{word.definition}</p>
+      <form>
+
+      </form>
     </div>
   )
 }

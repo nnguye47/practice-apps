@@ -23,12 +23,21 @@ const App = () => {
     e.preventDefault();
     var copy = Array.from(list);
     var storage = [];
+
     copy.forEach(word => {
       if (term === word.word) {
         storage.push(word);
       }
     })
+
+    if (storage.length === 0) {
+      setRenderList([{word: `Sorry, that word can't be found`, definition: 'Try again!'}])
+      return;
+    }
+
     setRenderList(storage);
+    setTerm('');
+    e.target.reset();
   }
 
   const handleChange = (e) => {
@@ -38,11 +47,14 @@ const App = () => {
 
   const addWord = (e) => {
     e.preventDefault();
-    console.log(term, def);
     axios.post('/addWord', {word: term, definition: def})
-      .then((res) => {
-        console.log('res from server');
+      .then(() => {
+        return axios.get('/getAll');
       })
+      .then((res) => {
+        setRenderList(res.data)
+      })
+      .then()
   }
 
   const handleDef = (e) => {

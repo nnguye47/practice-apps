@@ -46,11 +46,12 @@ app.post('/editWord', (req, res) => {
 })
 
 app.post('/addWord', (req, res) => {
-  console.log('hello from glossary');
+  console.log('post made it to serv: ', req.body);
 
-  Word.create({word: 'banana', definition: 'curvy yellow fruit'})
+  Word.create(req.body)
     .then(data => {
       console.log('data from addword: ', data);
+      res.sendStatus(201);
     })
 })
 

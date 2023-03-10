@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const sessionHandler = require("./middleware/session-handler");
 const logger = require("./middleware/logger");
+const controllers = require('./controllers.js');
 
 // Establishes connection to the database on server start
 const db = require("./db");
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 //controllers
 app.post('/account', (req, res) => {
   console.log('hello from account post');
+  controllers.createAccount();
 })
 
 app.post('/location', (req, res) => {

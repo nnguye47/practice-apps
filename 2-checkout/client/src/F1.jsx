@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import F2 from './F2.jsx';
 import axios from 'axios';
 
-const F1 = () => {
+const F1 = ({cookie}) => {
   const [userName, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,11 +20,14 @@ const F1 = () => {
     setPassword(e.target.value);
   };
 
+
+
   const renderF2 = (e) => {
     e.preventDefault();
     var account = {username: userName, email: email, password: password};
     console.log(account);
-    // render(<F2 />, document.getElementById("root"));
+    axios.post('/account', account);
+    render(<F2 />, document.getElementById("root"));
   };
 
   return (

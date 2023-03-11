@@ -22,6 +22,6 @@ db.connectAsync()
   )
   .catch((err) => console.log(err));
 
-module.exports = db;
+module.exports.connection = db;
 
 

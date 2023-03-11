@@ -2,8 +2,7 @@ const models = require('./models.js');
 
 module.exports = {
   createAccount: (data) => {
-    console.log('hello from controllers create account');
-    models.createAccount();
+    models.createAccount(data);
   },
 
   createCard: (card) => {

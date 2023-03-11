@@ -25,7 +25,8 @@ app.use(express.json());
 
 //controllers
 app.post('/account', (req, res) => {
-  controllers.createAccount();
+  req.body.id = req.session_id
+  controllers.createAccount(req.body);
 })
 
 app.post('/location', (req, res) => {

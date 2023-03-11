@@ -23,8 +23,8 @@ CREATE TABLE users (
   username VARCHAR(20) NOT NULL,
   email VARCHAR(50) NOT NULL,
   pw VARCHAR(18) NOT NULL,
-  addressID INT NOT NULL,
-  cardNumber INT NOT NULL,
+  addressID INT,
+  cardNumber INT,
   FOREIGN KEY(cardNumber) REFERENCES cards(id),
   FOREIGN KEY(addressID) REFERENCES locations(id)
 );

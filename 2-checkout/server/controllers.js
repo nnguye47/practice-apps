@@ -1,8 +1,15 @@
 const models = require('./models.js');
 
 module.exports = {
-  createAccount: (data) => {
-    models.createAccount(data);
+  createAccount:(data, callback) => {
+    models.createAccount(data, (err, data) => {
+      if (err) {
+        console.log('err in controller: ', err)
+        callback(err);
+      } else {
+        callback(null)
+      }
+    });
   },
 
   createCard: (card) => {

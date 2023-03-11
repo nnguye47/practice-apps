@@ -26,7 +26,14 @@ app.use(express.json());
 //controllers
 app.post('/account', (req, res) => {
   req.body.id = req.session_id
-  controllers.createAccount(req.body);
+  controllers.createAccount(req.body, (err, data) => {
+    if (err) {
+      console.log('err in /account');
+      callback(err);
+    } else {
+      res.sendStatus(201);
+    }
+  });
 })
 
 app.post('/location', (req, res) => {

@@ -7,17 +7,20 @@ module.exports = {
         console.log('err in controller: ', err)
         callback(err);
       } else {
-        callback(null)
+        callback(null);
       }
     });
   },
 
-  createCard: (card) => {
-    models.createCard();
-  },
-
-  createLocation: (location) => {
-    models.createLocation();
+  updateLocation: (data, callback) => {
+    console.log('made it tocontroller');
+    models.updateLocation(data, (err, res) => {
+      if (err) {
+        console.log('err in controllers updateLocation: ', err);
+      } else {
+        callback(null, res);
+      }
+    });
   },
 
   getInfo: (userID) => {

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { render } from "react-dom";
 import F1 from './F1.jsx';
+import F2 from './F2.jsx';
 
 const App = () => {
 

@@ -28,25 +28,32 @@ app.post('/account', (req, res) => {
   req.body.id = req.session_id
   controllers.createAccount(req.body, (err, data) => {
     if (err) {
-      console.log('err in /account');
-      callback(err);
+      console.log('err in /account', err);
     } else {
       res.sendStatus(201);
     }
   });
-})
+});
 
-app.post('/location', (req, res) => {
-  controllers.createLocation();
-})
+app.patch('/updateLocation', (req, res) => {
+  console.log('made it to app.patch');
+  req.body.cookie = req.session_id;
+  controllers.updateLocation(req.body, (err, data) => {
+    if (err) {
+      console.log('err in app.patch: ', err);
+    } else {
+      res.sendStatus(204);
+    }
+  })
+});
 
 app.post('/card', (req, res) => {
   controllers.createCard();
-})
+});
 
 app.get('/checkout', (req, res) => {
   controllers.getInfo(req.body);
-})
+});
 
 
 app.listen(process.env.PORT);

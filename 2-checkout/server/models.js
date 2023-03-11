@@ -6,8 +6,8 @@ module.exports = {
     console.log('hello from models.createAccount');
   },
 
-  getCard: (cardID) => {
-    var queryString = 'SELECT * FROM cards WHERE id = 1'
+  getInfo: (userInfo) => {
+    var queryString = `SELECT * FROM users WHERE id = ${userInfo.id}`
     db.query(queryString, (err, result) => {
       console.log('result from query: ', result)
     })

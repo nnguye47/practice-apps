@@ -1,12 +1,20 @@
 const models = require('./models.js');
 
 module.exports = {
-  createAccount: () => {
+  createAccount: (data) => {
     console.log('hello from controllers create account');
     models.createAccount();
   },
 
-  getCard: (location) => {
-    models.getCard(1);
+  createCard: (card) => {
+    models.createCard();
+  },
+
+  createLocation: (location) => {
+    models.createLocation();
+  },
+
+  getInfo: (userID) => {
+    models.getInfo(userID);
   }
 }

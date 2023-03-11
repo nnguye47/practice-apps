@@ -20,22 +20,24 @@ app.use(logger);
 // Serves up all static and generated assets in ../client/dist.
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
+//parse the body of the request
+app.use(express.json());
+
 //controllers
 app.post('/account', (req, res) => {
-  console.log('hello from account post');
   controllers.createAccount();
 })
 
 app.post('/location', (req, res) => {
-  console.log('hello from location post');
+  controllers.createLocation();
 })
 
 app.post('/card', (req, res) => {
-  console.log('hello from card post')
+  controllers.createCard();
 })
 
 app.get('/checkout', (req, res) => {
-  controllers.getCard(1);
+  controllers.getInfo(req.body);
 })
 
 

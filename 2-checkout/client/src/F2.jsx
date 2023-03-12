@@ -32,11 +32,11 @@ const F2 = () => {
 
 
 
-  const renderF2 = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
     var data = {line1: line1, line2: line2, city: city, currentState: state, zipcode: zip};
     axios.patch('/updateLocation', data);
-    // render(<F3 />, document.getElementById("root"));
+    render(<F3 />, document.getElementById("root"));
   }
 
   return (
@@ -47,7 +47,7 @@ const F2 = () => {
       city: <input onChange={handleCity} type='text' value={city}></input><br></br>
       state: <input onChange={handleState} type='text' value={state}></input><br></br>
       zip: <input onChange={handleZip} type='text' value={zip}></input><br></br>
-      <button onClick={renderF2}>Next</button>
+      <button onClick={handleClick}>Next</button>
     </div>
   )
 }

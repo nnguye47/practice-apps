@@ -47,12 +47,26 @@ app.patch('/updateLocation', (req, res) => {
   })
 });
 
-app.post('/card', (req, res) => {
-  controllers.createCard();
+app.patch('/updateCard', (req, res) => {
+  req.body.cookie = req.session_id;
+  controllers.updateCard(req.body, (err, data) => {
+    if (err) {
+      console.log('err in updateCard', err);
+    } else {
+      res.sendStatus(204);
+    }
+  });
 });
 
+
 app.get('/checkout', (req, res) => {
-  controllers.getInfo(req.body);
+  controllers.getInfo(req.body, (err, data) => {
+    if (err) {
+      console.log('err in app.get/checkout: ', err);
+    } else {
+      res.json(data).sendStatus(200);
+    }
+  });
 });
 
 

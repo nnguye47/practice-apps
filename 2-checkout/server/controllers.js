@@ -23,7 +23,24 @@ module.exports = {
     });
   },
 
-  getInfo: (userID) => {
-    models.getInfo(userID);
+  updateCard: (data, callback) => {
+    console.log('made it to updatecard controller');
+    models.updateCard(data, (err, res) => {
+      if (err) {
+        console.log('err in updatecard controllers: ', err);
+      } else {
+        callback(null, res);
+      }
+    })
+  },
+
+  getInfo: (cookie, callback) => {
+    models.getInfo(cookie, (err, data) => {
+      if (err) {
+        console.log('err in getInfo controllers');
+      } else {
+        callback(null, data);
+      }
+    });
   }
 }

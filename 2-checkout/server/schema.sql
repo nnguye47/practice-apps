@@ -14,7 +14,8 @@ CREATE TABLE users (
   zipcode INT,
   cardnum INT,
   cvv INT,
-  expiration INT
+  expiration INT,
+  cardZipcode INT
 );
 
 

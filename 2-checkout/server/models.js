@@ -27,10 +27,26 @@ module.exports = {
     });
   },
 
-  getInfo: (userInfo) => {
-    var queryString = `SELECT * FROM users WHERE id = ${userInfo.id}`
-    db.query(queryString, (err, result) => {
-      console.log('result from query: ', result)
+  updateCard: (data, callback) => {
+    console.log('made it to updateCard models: ', data);
+    queryString = `UPDATE users SET num = '${data.cardnum}', cvv = '${data.cvv}', expiration ='${data.expiration}', zipcode = ${data.cardZipcode} WHERE cookie = '${data.cookie}'`;
+    db.connection.query(queryString, (err, result) => {
+      if (err) {
+        console.log('err in models update card: ', err);
+      } else {
+        callback(null, result);
+      }
+    })
+  },
+
+  getInfo: (userInfo, callback) => {
+    var queryString = `SELECT * FROM users WHERE id = ${userInfo.id}`;
+    db.query(queryString, (err, data) => {
+      if (err) {
+        console.log('err in getInfo mode;s', err);
+      } else {
+        callback(null, data);
+      }
     })
   }
 }
